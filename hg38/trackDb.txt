@@ -1,0 +1,6 @@
+track NUMTs_hg38
+bigDataUrl human_NUMTs_hg38.bb
+shortLabel Human NUMTs
+longLabel Human NUMTs(Assembly GRCh38.p14)
+type bigBed
+visibility pack
