@@ -1,0 +1,54 @@
+#!/bin/sh
+# Author: Muyao HUANG 2024
+argNum=2
+if [ "$#" -ne 2 ]; then
+    echo "You need $argNum arguments" 1>&2
+    echo "input_maf_file" 1>&2
+    echo "reverse_maf" 1>&2
+    echo "Usage: $0 <input_maf_file> <reverse_maf>"
+    exit 1
+fi
+
+input_maf=$1
+reverse_maf=$2
+length=30
+
+#find the minmum evalue in reverse file
+temp=$(awk '
+     /^a/{
+        split($4, arr, "=")
+        evalue = arr[2]
+        print evalue
+    }
+' "$reverse_maf")
+
+# If temp is empty, output the original input and exit
+if [ -z "$temp" ]; then
+    cat "$input_maf"
+    exit 0
+fi
+
+# Loop through each evalue in the $temp and compare with the minimum value
+min_evalue=$(echo "$temp" | head -n 1)
+while read -r evalue; do
+    if (( $(echo "$evalue < $min_evalue" | bc -l) )); then
+        min_evalue=$evalue
+    fi
+done <<< "$temp"
+echo "min_evalue in reverse test: $min_evalue"
+
+filtered_concent=$(grep -v '^#' $input_maf)
+awk -v evalue_threshold=$min_evalue -v len_threshold=$length -v OFS="\n" -v ORS="\n\n" '
+    BEGIN {
+        RS="\n\n"; FS="\n"
+    }
+    {   
+        split($1, a, " ")
+        split(a[4], arr, "=")
+        evalue = arr[2] + 0  # convert the format to float 
+        split($3, b, " ")
+        len=b[4]
+        if (evalue < evalue_threshold {
+            print $0
+        }
+    }' <<< "$filtered_concent"

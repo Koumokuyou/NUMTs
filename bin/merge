@@ -1,0 +1,22 @@
+#!/bin/sh
+# Author: Muyao HUANG 2024
+
+#This is a merge script tring to merge the protein results and DNA results into one bed file
+argNum=3
+if [ $# -ne $argNum ]; then
+	echo "You need $argNum arguments" 1>&2
+	echo "- The first file" 1>&2                                                  
+	echo "- The second file" 1>&2 
+	echo "- The species name" 1>&2 
+	echo "Usage: $0 <file1> <file2> <species>"
+	exit 1 
+fi
+
+file1=$1
+file2=$2
+species=$3
+length=30 #set the minimum length of the NUMTs here
+
+filtered_file="$species""_Numts_filtered.bed"
+
+cat $file1 $file2 | sort -k1,1 -k2,2n | bedtools merge -i - -s -c 4,5,6 -o distinct | awk -v len=$length '{if (($3 - $2 + 1) >= $len) print $0}' >$filtered_file
