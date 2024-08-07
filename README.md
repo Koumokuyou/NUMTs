@@ -7,12 +7,14 @@ NUMTs in this track are found by the steps below:
 
 ## Nuclear genome-mitochondrial genome comparison
 We first compared nuclear genome to mitochondrial genome by [LAST][]. The sample commands are shown below:
+
     lastdb -P8 -c mitogenodb $mitogenoFASTA
     last-train -S0 --pid=70 --sample-number=0 -P8 mitogenodb $nuclearFASTA >nu2mitogeno.train
     lastal -P8 -D$Dopt -J1 -R00 -p nu2mitogeno.train mitogenodb $nuclearFASTA >nu2mitogeno.maf
 
 ## Nuclear genome-mitochondrial protein comparison
 Comparison between nuclear genome and mitochondrial protein was also completed by [LAST][], with commands:
+
     lastdb -P8 -q -c mitoprodb $mitoproFASTA
     last-train --codon --pid=70 --sample-number=0 -P8 mitoprodb $nuclearFASTA >nu2mitopro.train
     lastal -P8 -D$Dopt -K1 -m500 -p nu2mitopro.train mitoprodb $nuclearFASTA >nu2mitopro.maf
@@ -21,6 +23,7 @@ Comparison between nuclear genome and mitochondrial protein was also completed b
 
 ## Reverse search
 Next, we repeated the search using a reversed query sequence respectively in the two comparison described above for negative control. Take the reverse search in *Nuclear genome-mitochondrial genome comparison* for example, the sample commands are like:
+
     lastal -P8 -D$Dopt -J1 -R00 -p nu2mitogeno.train mitogenodb $revnuclearFASTA >rev_numitogeno.maf 
 
 The lowest e-value obtained from the reverse search was used as a threshold to filter out alignments with e-values higher than those from the original search. 
@@ -28,9 +31,11 @@ The lowest e-value obtained from the reverse search was used as a threshold to f
 
 ## Remove nuclear ribosomal RNA regions
 Before the final step, we need to convert the result from maf format to [BED] format using [maf-convert]:
+
    maf-convert bed filtered_numitogeno.maf >filtered_numitogeno.bed
 
 Alignments that overlapped with nuclear ribosomal RNA region were also excluded. This is due to the fact that mitochondrial rRNA is similar to nuclear rRNA, resulting in an overestimation of ancient NUMTs counts as some mitochondrial sequences are mistakenly aligned with the nuclear rRNA regions.
+
     remvrrna filtered_numitogeno.bed rRNA.bed
 
 
