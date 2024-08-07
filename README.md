@@ -26,14 +26,16 @@ Next, we repeated the search using a reversed query sequence respectively in the
 
     lastal -P8 -D$Dopt -J1 -R00 -p nu2mitogeno.train mitogenodb $revnuclearFASTA >rev_numitogeno.maf 
 
-The lowest e-value obtained from the reverse search was used as a threshold to filter out alignments with e-values higher than those from the original search. 
+The lowest e-value obtained from the reverse search was used as a threshold to filter out alignments with e-values higher than those from the original search.
 
-   fiter_maf nu2mitogeno.maf rev_numitogeno.maf > filtered_numitogeno.maf
+
+   filter_maf nu2mitogeno.maf rev_numitogeno.maf > filtered_numitogeno.maf
 
 ## Remove nuclear ribosomal RNA regions
 Before the final step, we need to convert the result from maf format to [BED] format using [maf-convert]:
 
-   maf-convert bed filtered_numitogeno.maf >filtered_numitogeno.bed
+
+   maf-convert bed filtered_numitogeno.maf > filtered_numitogeno.bed
 
 Alignments that overlapped with nuclear ribosomal RNA region were also excluded. This is due to the fact that mitochondrial rRNA is similar to nuclear rRNA, resulting in an overestimation of ancient NUMTs counts as some mitochondrial sequences are mistakenly aligned with the nuclear rRNA regions.
 
