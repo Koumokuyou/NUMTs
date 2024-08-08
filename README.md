@@ -19,7 +19,7 @@ Comparison between nuclear genome and mitochondrial protein was also completed b
     last-train --codon --pid=70 --sample-number=0 -P8 mitoprodb $nuclearFASTA > nu2mitopro.train
     lastal -P8 -D$Dopt -K1 -m500 -p nu2mitopro.train mitoprodb $nuclearFASTA > nu2mitopro.maf
 
-**Notice**: For `$Dopt` one can set it to adjust the sensitivity of results in this search. See [E-value options][] for more details. In this track, `$Dopt` was set the same as the size of genome in $nuclearFASTA.
+**Notice**: For `$Dopt` one can set it to adjust the sensitivity of results in this search. See [E-value options][] for more details. In this track, `$Dopt` was set the same as the size of genome in `$nuclearFASTA`.
 
 ## Reverse search
 Next, we repeated the search using a reversed query sequence respectively in the two comparisons described above for negative control. Take the reverse search in *Nuclear genome-mitochondrial genome comparison* for example, the sample commands are like this:
@@ -39,12 +39,14 @@ Before removing, we need to convert the result from maf format to [BED] format u
 
 
 Alignments that overlapped with nuclear ribosomal RNA region were also excluded respectively in the two comparisons. This is due to the fact that mitochondrial rRNA is similar to nuclear rRNA, resulting in an overestimation of ancient NUMTs counts as some mitochondrial sequences are mistakenly aligned with the nuclear rRNA regions.
+This step needs [seg-suite][], so you may need to install it beforehand.
 
     remvrrna filtered_nu2mitogeno.bed rRNA.bed
     remvrrna filtered_nu2mitopro.bed rRNA.bed
 
 ## Merge results 
 Finally, the results in the two comparisons were merged, and alignments with a length of less than 30bp in the merged result were removed. This threshold was determined empirically.
+This step needs [bedtools merge][], so you may need to install it beforehand.
 
     merge filtered_nu2mitogeno_movrrna.bed filtered_nu2mitopro_movrrna.bed $yourspecies 
 
@@ -55,3 +57,5 @@ Please set `$yourspecies` to the name of the species you are looking at.
 [E-value options]: https://gitlab.com/mcfrith/last/-/blob/main/doc/lastal.rst?ref_type=heads
 [BED]: https://genome.ucsc.edu/FAQ/FAQformat.html#format1
 [maf-convert]: https://gitlab.com/mcfrith/last/-/blob/main/doc/maf-convert.rst?ref_type=heads
+[seg-suite]: https://github.com/mcfrith/seg-suite
+[bedtools merge]: https://bedtools.readthedocs.io/en/latest/content/tools/merge.html
