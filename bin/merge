@@ -15,7 +15,9 @@ fi
 file1=$1
 file2=$2
 species=$3
-length=30 # Set the minimum length of the NUMTs here
+# Set the minimum length of the NUMTs here
+length=30 
+
 
 filtered_file="$species""_Numts_filtered.bed"
 
