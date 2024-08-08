@@ -19,7 +19,9 @@ Comparison between nuclear genome and mitochondrial protein was also completed b
     last-train --codon --pid=70 --sample-number=0 -P8 mitoprodb $nuclearFASTA > nu2mitopro.train
     lastal -P8 -D$Dopt -K1 -m500 -p nu2mitopro.train mitoprodb $nuclearFASTA > nu2mitopro.maf
 
-**Notice**: For `$Dopt` one can set it to adjust the sensitivity of results in this search. See [E-value options][] for more details. In this track, `$Dopt` was set the same as the size of genome in `$nuclearFASTA`.
+**Notice**: For `$Dopt` one can set it to adjust the sensitivity of results in this search. See [E-value options][] for more details. In this track, `$Dopt` was set the same as the size of genome in `$nuclearFASTA`, using command like this:
+
+    grep -v "^>" $nuclearFASTA| tr -cd acgtACGT | wc -c
 
 ## Reverse search
 Next, we repeated the search using a reversed query sequence respectively in the two comparisons described above for negative control. Take the reverse search in *Nuclear genome-mitochondrial genome comparison* for example, the sample commands are like this:
