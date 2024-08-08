@@ -19,26 +19,34 @@ Comparison between nuclear genome and mitochondrial protein was also completed b
     last-train --codon --pid=70 --sample-number=0 -P8 mitoprodb $nuclearFASTA > nu2mitopro.train
     lastal -P8 -D$Dopt -K1 -m500 -p nu2mitopro.train mitoprodb $nuclearFASTA > nu2mitopro.maf
 
-**Notice**: For $Dopt one can set it to adjust the sensitivity of results in this search. See [E-value options][] for more details. In this track, $Dopt was set the same as the size of genome in $nuclearFASTA.
+**Notice**: For `$Dopt` one can set it to adjust the sensitivity of results in this search. See [E-value options][] for more details. In this track, `$Dopt` was set the same as the size of genome in $nuclearFASTA.
 
 ## Reverse search
 Next, we repeated the search using a reversed query sequence respectively in the two comparison described above for negative control. Take the reverse search in *Nuclear genome-mitochondrial genome comparison* for example, the sample commands are like:
 
-    lastal -P8 -D$Dopt -J1 -R00 -p nu2mitogeno.train mitogenodb $revnuclearFASTA > rev_numitogeno.maf 
+    lastal -P8 -D$Dopt -J1 -R00 -p nu2mitogeno.train mitogenodb $revnuclearFASTA > rev_nu2mitogeno.maf 
 
 The lowest e-value obtained from the reverse search was used as a threshold to filter out alignments with e-values higher than those from the original search.
 
-    filter_maf nu2mitogeno.maf rev_numitogeno.maf > filtered_numitogeno.maf
+    filter_maf nu2mitogeno.maf rev_nu2mitogeno.maf > filtered_nu2mitogeno.maf
+    filter_maf nu2mitopro.maf rev_nu2mitopro.maf > filtered_nu2mitopro.maf
 
 ## Remove nuclear ribosomal RNA regions
-Before the final step, we need to convert the result from maf format to [BED] format using [maf-convert]:
+Before the removing, we need to convert the result from maf format to [BED] format using [maf-convert]:
 
-    maf-convert bed filtered_numitogeno.maf > filtered_numitogeno.bed
+    maf-convert bed filtered_nu2mitogeno.maf > filtered_nu2mitogeno.bed
+    maf-convert bed filtered_nu2mitopro.maf > filtered_nu2mitopro.bed
 
-Alignments that overlapped with nuclear ribosomal RNA region were also excluded. This is due to the fact that mitochondrial rRNA is similar to nuclear rRNA, resulting in an overestimation of ancient NUMTs counts as some mitochondrial sequences are mistakenly aligned with the nuclear rRNA regions.
 
-    remvrrna filtered_numitogeno.bed rRNA.bed
+Alignments that overlapped with nuclear ribosomal RNA region were also excluded respectively in the two comparison. This is due to the fact that mitochondrial rRNA is similar to nuclear rRNA, resulting in an overestimation of ancient NUMTs counts as some mitochondrial sequences are mistakenly aligned with the nuclear rRNA regions.
 
+    remvrrna filtered_nu2mitogeno.bed rRNA.bed
+    remvrrna filtered_nu2mitopro.bed rRNA.bed
+
+## Merge results 
+Finally, the results in the two comparison were merged, and alignments with a length less than 30bp in the merged result were removed. This threshold was determined empirically.
+
+    merge filtered_nu2mitogeno_movrrna.bed filtered_nu2mitopro_movrrna.bed $yourspecies 
 
 [LAST]: https://gitlab.com/mcfrith/last/-/tree/main?ref_type=heads
 [E-value options]: https://gitlab.com/mcfrith/last/-/blob/main/doc/lastal.rst?ref_type=heads
