@@ -1,7 +1,7 @@
 #!/bin/sh
 # Author: Muyao HUANG 2024
 
-#This is a merge script tring to merge the protein results and DNA results into one bed file
+# This is a merge script tring to merge the protein results and DNA results into one bed file
 argNum=3
 if [ $# -ne $argNum ]; then
 	echo "You need $argNum arguments" 1>&2
@@ -15,7 +15,7 @@ fi
 file1=$1
 file2=$2
 species=$3
-length=30 #set the minimum length of the NUMTs here
+length=30 # Set the minimum length of the NUMTs here
 
 filtered_file="$species""_Numts_filtered.bed"
 

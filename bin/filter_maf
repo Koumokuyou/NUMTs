@@ -13,7 +13,7 @@ input_maf=$1
 reverse_maf=$2
 length=30
 
-#find the minmum evalue in reverse file
+# Find the minmum evalue in reverse file
 temp=$(awk '
      /^a/{
         split($4, arr, "=")
