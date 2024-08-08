@@ -21,7 +21,7 @@ Comparison between nuclear genome and mitochondrial protein was also completed b
 
 **Notice**: For `$Dopt` one can set it to adjust the sensitivity of results in this search. See [E-value options][] for more details. In this track, `$Dopt` was set the same as the size of genome in `$nuclearFASTA`, using command like this:
 
-    grep -v "^>" $nuclearFASTA| tr -cd acgtACGT | wc -c
+    grep -v "^>" $nuclearFASTA | tr -cd acgtACGT | wc -c
 
 ## Reverse search
 Next, we repeated the search using a reversed query sequence respectively in the two comparisons described above for negative control. Take the reverse search in *Nuclear genome-mitochondrial genome comparison* for example, the sample commands are like this:
