@@ -47,8 +47,10 @@ Alignments that overlapped with nuclear ribosomal RNA region were also excluded 
 Finally, the results in the two comparison were merged, and alignments with a length less than 30bp in the merged result were removed. This threshold was determined empirically.
 
     merge filtered_nu2mitogeno_movrrna.bed filtered_nu2mitopro_movrrna.bed $yourspecies 
-    
+
 set `$yourspecies` to the name of species you are looking at.
+
+
 [LAST]: https://gitlab.com/mcfrith/last/-/tree/main?ref_type=heads
 [E-value options]: https://gitlab.com/mcfrith/last/-/blob/main/doc/lastal.rst?ref_type=heads
 [BED]: https://genome.ucsc.edu/FAQ/FAQformat.html#format1
