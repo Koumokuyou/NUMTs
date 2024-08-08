@@ -39,6 +39,7 @@ Before removing, we need to convert the result from maf format to [BED] format u
 
 
 Alignments that overlapped with nuclear ribosomal RNA region were also excluded respectively in the two comparisons. This is due to the fact that mitochondrial rRNA is similar to nuclear rRNA, resulting in an overestimation of ancient NUMTs counts as some mitochondrial sequences are mistakenly aligned with the nuclear rRNA regions.
+
 This step needs [seg-suite][], so you may need to install it beforehand.
 
     remvrrna filtered_nu2mitogeno.bed rRNA.bed
@@ -46,6 +47,7 @@ This step needs [seg-suite][], so you may need to install it beforehand.
 
 ## Merge results 
 Finally, the results in the two comparisons were merged, and alignments with a length of less than 30bp in the merged result were removed. This threshold was determined empirically.
+
 This step needs [bedtools merge][], so you may need to install it beforehand.
 
     merge filtered_nu2mitogeno_movrrna.bed filtered_nu2mitopro_movrrna.bed $yourspecies 
