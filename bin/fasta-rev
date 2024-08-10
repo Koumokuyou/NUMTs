@@ -1,0 +1,7 @@
+#! /bin/sh
+
+# This ensures each sequence is all on one line:
+awk '/>/ {$0 = (NR>1 ? RS : "") $0 RS}; 1' ORS= "$@" |
+
+# This reverses each sequence:
+awk '/>/ {print}; !/>/ {print | "rev"; close("rev")}'

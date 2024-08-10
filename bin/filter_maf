@@ -1,25 +1,23 @@
 #!/bin/sh
 # Author: Muyao HUANG 2024
-
 argNum=2
 if [ "$#" -ne 2 ]; then
     echo "You need $argNum arguments" 1>&2
     echo "input_maf_file" 1>&2
     echo "reverse_maf" 1>&2
-    echo "Usage: $0 <input_maf_file> <reverse_maf>"
+    echo "Usage: $0 <input_maf_file> <reverse_maf>" 1>&2
     exit 1
 fi
 
 input_maf=$1
 reverse_maf=$2
-length=30
 
-# Find the minmum evalue in reverse file
+# Find the maximum score in reverse file
 temp=$(awk '
      /^a/{
-        split($4, arr, "=")
-        evalue = arr[2]
-        print evalue
+        split($2, arr, "=")
+        score = arr[2] + 0
+        print score
     }
 ' "$reverse_maf")
 
@@ -29,27 +27,25 @@ if [ -z "$temp" ]; then
     exit 0
 fi
 
-# Loop through each evalue in the $temp and compare with the minimum value
-min_evalue=$(echo "$temp" | head -n 1)
-while read -r evalue; do
-    if (( $(echo "$evalue < $min_evalue" | bc -l) )); then
-        min_evalue=$evalue
+# Loop through each score in the $temp and compare with the minimum value
+max_score=$(echo "$temp" | head -n 1)
+while read -r score; do
+    if (( $(echo "$score > $max_score" | bc -l) )); then
+        max_score=$score
     fi
 done <<< "$temp"
-echo "min_evalue in reverse test: $min_evalue"
+echo "max score in reverse test: $max_score"
 
 filtered_concent=$(grep -v '^#' $input_maf)
-awk -v evalue_threshold=$min_evalue -v len_threshold=$length -v OFS="\n" -v ORS="\n\n" '
+awk -v score_threshold=$max_score -v OFS="\n" -v ORS="\n\n" '
     BEGIN {
         RS="\n\n"; FS="\n"
     }
     {   
         split($1, a, " ")
-        split(a[4], arr, "=")
-        evalue = arr[2] + 0  # convert the format to float 
-        split($3, b, " ")
-        len=b[4]
-        if (evalue < evalue_threshold {
+        split(a[2], arr, "=")
+        score = arr[2] + 0 
+        if (score > score_threshold) {
             print $0
         }
     }' <<< "$filtered_concent"

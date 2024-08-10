@@ -22,13 +22,19 @@ Comparison between nuclear genome and mitochondrial protein was also completed b
 **Notice**: For `$Dopt` one can set it to adjust the sensitivity of results in this search. See [E-value options][] for more details. In this track, `$Dopt` was set the same as the size of genome in `$nuclearFASTA`, using command like this:
 
     grep -v "^>" $nuclearFASTA | tr -cd acgtACGT | wc -c
+    
+`-P8` makes it faster by using 8 threads, with no effect on results.
 
 ## Reverse search
-Next, we repeated the search using a reversed query sequence respectively in the two comparisons described above for negative control. Take the reverse search in *Nuclear genome-mitochondrial genome comparison* for example, the sample commands are like this:
+Next, we repeated the search using a reversed query sequence respectively in the two comparisons described above for negative control. Reversed query sequence can be obtained by running command:
+
+    fasta-rev $nuclearFASTA > $revnuclearFASTA
+
+Take the reverse search in *Nuclear genome-mitochondrial genome comparison* for example, the sample commands are like this:
 
     lastal -P8 -D$Dopt -J1 -R00 -p nu2mitogeno.train mitogenodb $revnuclearFASTA > rev_nu2mitogeno.maf 
 
-The lowest e-value obtained from the reverse search was used as a threshold to filter out alignments with e-values higher than those from the original search.
+The highest score obtained from the reverse search was used as a threshold to filter out alignments with score lower than those from the original search.
 
     filter_maf nu2mitogeno.maf rev_nu2mitogeno.maf > filtered_nu2mitogeno.maf
     filter_maf nu2mitopro.maf rev_nu2mitopro.maf > filtered_nu2mitopro.maf
@@ -36,7 +42,7 @@ The lowest e-value obtained from the reverse search was used as a threshold to f
 ## Remove nuclear ribosomal RNA regions
 Before removing, we need to convert the result from maf format to [BED] format using [maf-convert]:
 
-    maf-convert bed filtered_nu2mitogeno.maf > filtered_nu2mitogeno.bed
+    maf-convert bed -s2 filtered_nu2mitogeno.maf > filtered_nu2mitogeno.bed
     maf-convert bed filtered_nu2mitopro.maf > filtered_nu2mitopro.bed
 
 

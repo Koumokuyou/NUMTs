@@ -21,4 +21,4 @@ length=30
 
 filtered_file="$species""_Numts_filtered.bed"
 
-cat $file1 $file2 | sort -k1,1 -k2,2n | bedtools merge -i - -s -c 4,5,6 -o distinct | awk -v len=$length '{if (($3 - $2 + 1) >= $len) print $0}' >$filtered_file
+cat $file1 $file2 | sort -k1,1 -k2,2n | bedtools merge -i - -s -c 4,5,6 -o distinct | awk -v len=$length '{if (($3 - $2 + 1) >= len) print $0}' >$filtered_file

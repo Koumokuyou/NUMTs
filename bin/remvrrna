@@ -9,15 +9,15 @@ if [ $# -ne $argNum ]; then
     echo "Usage: $0 <alignsFile> <rRNAFile>"
     exit 1
 fi
-bedFile=$1
+alignsFile=$1
 rRNAFile=$2
 
 # Define output file name and max overlap percent
-inputFile="${bedFile%.*}"
+inputFile="${alignsFile%.*}"
 outputFile="${inputFile}_movrrna.bed"
 maxOverlapPercent=50
 
 seg-join -x$maxOverlapPercent \
     <(awk '{print $3-$2, $1, $2, $0, 0}' "$rRNAFile" | tr '\t' '!' | seg-sort) \
-    <(awk '{print $3-$2, $1, $2, $0, 0}' "$bedFile" | tr '\t' '!' | seg-sort) \
+    <(awk '{print $3-$2, $1, $2, $0, 0}' "$alignsFile" | tr '\t' '!' | seg-sort) \
     | cut -f4 | tr '!' '\t' > "$outputFile"
