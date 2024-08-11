@@ -1,4 +1,4 @@
-This track shows Nuclear mitochondrial genome segments in the human genome(Assembly GRCh38.p14). It shows alignments of the nuclear genome to the mitochondrial genome.
+This track shows Nuclear mitochondrial DNA segments in the human genome(Assembly GRCh38.p14). It shows alignments of the nuclear genome to the mitochondrial genome.
 
 **Notice**: Alignments reference to incompletely assembled or unmapped chromosome locations are omitted in this track.
 
