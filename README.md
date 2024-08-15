@@ -1,6 +1,14 @@
-This track shows Nuclear mitochondrial DNA segments in the human genome(Assembly GRCh38.p14). It shows alignments of the nuclear genome to the mitochondrial genome.
+This track is a collection of Nuclear mitochondrial genome segments, provided in [BED][] format.
 
 **Notice**: Alignments reference to incompletely assembled or unmapped chromosome locations are omitted in this track.
+
+| Genome name  | Animal     | Source   |
+|--------------|------------|----------|
+| hg38         | human      | [NCBI][] |
+| mm39         | mouse      | [NCBI][] |
+| panTro6      | chimpanzee | [NCBI][] |
+| susScr11     | pig        | [NCBI][] |
+
 
 # NUMTs search
 NUMTs in this track are found by the steps below:
@@ -40,7 +48,7 @@ The highest score obtained from the reverse search was used as a threshold to fi
     filter_maf nu2mitopro.maf rev_nu2mitopro.maf > filtered_nu2mitopro.maf
 
 ## Remove nuclear ribosomal RNA regions
-Before removing, we need to convert the result from maf format to [BED] format using [maf-convert]:
+Before removing, we need to convert the result from maf format to [BED][] format using [maf-convert]:
 
     maf-convert bed -s2 filtered_nu2mitogeno.maf > filtered_nu2mitogeno.bed
     maf-convert bed filtered_nu2mitopro.maf > filtered_nu2mitopro.bed
@@ -69,3 +77,4 @@ Please set `$yourspecies` to the name of the species you are looking at.
 [maf-convert]: https://gitlab.com/mcfrith/last/-/blob/main/doc/maf-convert.rst?ref_type=heads
 [seg-suite]: https://github.com/mcfrith/seg-suite
 [bedtools merge]: https://bedtools.readthedocs.io/en/latest/content/tools/merge.html
+[NCBI]: https://www.ncbi.nlm.nih.gov/genome
