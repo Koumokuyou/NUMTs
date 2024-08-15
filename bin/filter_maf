@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Author: Muyao HUANG 2024
 argNum=2
 if [ "$#" -ne 2 ]; then

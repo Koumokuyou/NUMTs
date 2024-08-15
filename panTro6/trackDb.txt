@@ -1,6 +1,7 @@
 track NUmts
-bigDataUrl human_NUMTs_hg38.bb
+bigDataUrl chimpanzee_NUMTs_panTro6.bb
 shortLabel NUMTs
 longLabel Nuclear mitochondiral DNA segments
 type bigBed
 visibility pack
+html ../hg38/NUMTs_description

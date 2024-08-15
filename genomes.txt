@@ -1,2 +1,11 @@
 genome hg38
 trackDb hg38/trackDb.txt
+
+genome mm39
+trackDb mm39/trackDb.txt
+
+genome panTro6
+trackDb panTro6/trackDb.txt
+
+genome susScr11
+trackDb susScr11/trackDb.txt

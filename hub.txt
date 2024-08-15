@@ -1,5 +1,5 @@
 hub NUMTs
-shortLabel NUMTs_hg38
+shortLabel NUMTs
 longLabel Nuclear mitochondrial DNA segments
 genomesFile genomes.txt
 email 2171272903@edu.k.u-tokyo.ac.jp
