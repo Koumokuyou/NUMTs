@@ -4,4 +4,4 @@ shortLabel NUMTs
 longLabel Nuclear mitochondiral DNA segments
 type bigBed
 visibility pack
-html ../hg38/NUMTs_description
+html ../hg38/NUMTs_description.html
