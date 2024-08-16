@@ -1,7 +1,7 @@
 track NUmts
 bigDataUrl mouse_NUMTs_mm39.bb
 shortLabel NUMTs
-longLabel Nuclear mitochondiral DNA segments
+longLabel Nuclear mitochondrial DNA segments
 type bigBed
 visibility pack
 html ../hg38/NUMTs_description.html
