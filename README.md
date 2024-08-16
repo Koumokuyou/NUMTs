@@ -35,13 +35,9 @@ Comparison between nuclear genome and mitochondrial protein was also completed b
 
 ## Reverse search
 Next, we repeated the search using a reversed query sequence respectively in the two comparisons described above for negative control.
-
-    lastal -P8 -D$Dopt -J1 -R00 --reverse -p nu2mitogeno.train mitogenodb $nuclearFASTA > rev_nu2mitogeno.maf
-    lastal -P8 -D$Dopt -K1 -m500 --reverse -p nu2mitopro.train mitoprodb $nuclearFASTA > rev_nu2mitopro.maf 
-
 Take the reverse search in *Nuclear genome-mitochondrial genome comparison* for example, the sample commands are like this:
 
-    lastal -P8 -D$Dopt -J1 -R00 -p nu2mitogeno.train mitogenodb $revnuclearFASTA > rev_nu2mitogeno.maf 
+     lastal -P8 -D$Dopt -J1 -R00 --reverse -p nu2mitogeno.train mitogenodb $nuclearFASTA > rev_nu2mitogeno.maf
 
 The highest score obtained from the reverse search was used as a threshold to filter out alignments with score lower than those from the original search.
 
