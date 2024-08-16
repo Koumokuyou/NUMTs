@@ -3,5 +3,5 @@ shortLabel NUMTs
 longLabel Nuclear mitochondrial DNA segments
 genomesFile genomes.txt
 email 2171272903@edu.k.u-tokyo.ac.jp
-descriptionUrl hg38/NUMTs_description.html
+descriptionUrl hg38/NUmts.html
 
