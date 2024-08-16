@@ -34,9 +34,10 @@ Comparison between nuclear genome and mitochondrial protein was also completed b
 `-P8` makes it faster by using 8 threads, with no effect on results.
 
 ## Reverse search
-Next, we repeated the search using a reversed query sequence respectively in the two comparisons described above for negative control. Reversed query sequence can be obtained by running command:
+Next, we repeated the search using a reversed query sequence respectively in the two comparisons described above for negative control.
 
-    fasta-rev $nuclearFASTA > $revnuclearFASTA
+    lastal -P8 -D$Dopt -J1 -R00 --reverse -p nu2mitogeno.train mitogenodb $nuclearFASTA > rev_nu2mitogeno.maf
+    lastal -P8 -D$Dopt -K1 -m500 --reverse -p nu2mitopro.train mitoprodb $nuclearFASTA > rev_nu2mitopro.maf 
 
 Take the reverse search in *Nuclear genome-mitochondrial genome comparison* for example, the sample commands are like this:
 
