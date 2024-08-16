@@ -1,5 +1,5 @@
 track NUmts
-bigDataUrl pig_NUMTs_susScr11.bb
+bigDataUrl NUMTs_susScr11.bb
 shortLabel NUMTs
 longLabel Nuclear mitochondrial DNA segments
 type bigBed
