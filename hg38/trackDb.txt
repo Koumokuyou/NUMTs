@@ -1,5 +1,5 @@
 track NUmts
-bigDataUrl human_NUMTs_hg38.bb
+bigDataUrl NUMTs_hg38.bb
 shortLabel NUMTs
 longLabel Nuclear mitochondiral DNA segments
 type bigBed

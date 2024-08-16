@@ -1,5 +1,5 @@
 track NUmts
-bigDataUrl chimpanzee_NUMTs_panTro6.bb
+bigDataUrl NUMTs_panTro6.bb
 shortLabel NUMTs
 longLabel Nuclear mitochondrial DNA segments
 type bigBed
