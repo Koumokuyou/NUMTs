@@ -1,6 +1,6 @@
 track NUmts
 bigDataUrl NUMTs_hg38.bb
 shortLabel NUMTs
-longLabel Nuclear mitochondiral DNA segments
+longLabel Nuclear mitochondrial DNA segments
 type bigBed
 visibility pack
