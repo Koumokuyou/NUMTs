@@ -9,6 +9,8 @@ This track is a collection of Nuclear mitochondrial genome segments, provided in
 | panTro6      | chimpanzee | [NCBI][] |
 | susScr11     | pig        | [NCBI][] |
 
+You can easily view the NUMTs in the UCSC genome browser, by clicking:
+https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&hubUrl=https://raw.githubusercontent.com/Koumokuyou/NUMTs/main/hub.txt
 
 # NUMTs search
 NUMTs in this track are found by the steps below:
