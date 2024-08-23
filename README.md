@@ -20,7 +20,7 @@ We first compared the nuclear genome to the mitochondrial genome by [LAST][]. Th
 
     lastdb -P8 -c mitogenodb $mitogenoFASTA
     last-train -S0 --pid=70 --sample-number=0 -P8 mitogenodb $nuclearFASTA > nu2mitogeno.train
-    lastal -P8 -D$Dopt -J1 -R00 -p nu2mitogeno.train mitogenodb $nuclearFASTA > nu2mitogeno.maf
+    lastal -P8 -H1 -J1 -R00 -p nu2mitogeno.train mitogenodb $nuclearFASTA > nu2mitogeno.maf
 
 ## Nuclear genome-mitochondrial protein comparison
 Comparison between nuclear genome and mitochondrial protein was also completed by [LAST][], with commands:
