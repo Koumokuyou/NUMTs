@@ -27,11 +27,7 @@ Comparison between nuclear genome and mitochondrial protein was also completed b
 
     lastdb -P8 -q -c mitoprodb $mitoproFASTA
     last-train --codon --pid=70 --sample-number=0 -P8 mitoprodb $nuclearFASTA > nu2mitopro.train
-    lastal -P8 -D$Dopt -K1 -m500 -p nu2mitopro.train mitoprodb $nuclearFASTA > nu2mitopro.maf
-
-**Notice**: For `$Dopt` one can set it to adjust the sensitivity of results in this search. See [E-value options][] for more details. In this track, `$Dopt` was set the same as the size of genome in `$nuclearFASTA`, using command like this:
-
-    grep -v "^>" $nuclearFASTA | tr -cd acgtACGT | wc -c
+    lastal -P8 -H1 -K1 -m500 -p nu2mitopro.train mitoprodb $nuclearFASTA > nu2mitopro.maf
     
 `-P8` makes it faster by using 8 threads, with no effect on results.
 
@@ -39,7 +35,7 @@ Comparison between nuclear genome and mitochondrial protein was also completed b
 Next, we repeated the search using a reversed query sequence respectively in the two comparisons described above for negative control.
 Take the reverse search in *Nuclear genome-mitochondrial genome comparison* for example, the sample commands are like this:
 
-     lastal -P8 -D$Dopt -J1 -R00 --reverse -p nu2mitogeno.train mitogenodb $nuclearFASTA > rev_nu2mitogeno.maf
+     lastal -P8 -H1 -J1 -R00 --reverse -p nu2mitogeno.train mitogenodb $nuclearFASTA > rev_nu2mitogeno.maf
 
 The highest score obtained from the reverse search was used as a threshold to filter out alignments with score lower than those from the original search.
 
@@ -71,7 +67,6 @@ Please set `$yourspecies` to the name of the species you are looking at.
 
 
 [LAST]: https://gitlab.com/mcfrith/last/-/tree/main?ref_type=heads
-[E-value options]: https://gitlab.com/mcfrith/last/-/blob/main/doc/lastal.rst?ref_type=heads
 [BED]: https://genome.ucsc.edu/FAQ/FAQformat.html#format1
 [maf-convert]: https://gitlab.com/mcfrith/last/-/blob/main/doc/maf-convert.rst?ref_type=heads
 [seg-suite]: https://github.com/mcfrith/seg-suite
