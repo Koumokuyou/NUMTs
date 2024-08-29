@@ -53,10 +53,10 @@ The highest score obtained from the reverse search was used as a threshold to fi
     filter_maf nu2mitopro.maf rev_nu2mitopro.maf > filtered_nu2mitopro.maf
 
 ## Remove nuclear ribosomal RNA regions
-Before removing, we need to convert the result from maf format to [BED][] format using [maf-convert]:
+Before removing, we need to convert the result from maf format to [BED][] format using `maf-Bed`:
 
-    maf-convert bed -s2 filtered_nu2mitogeno.maf > filtered_nu2mitogeno.bed
-    maf-convert bed filtered_nu2mitopro.maf > filtered_nu2mitopro.bed
+    maf-Bed filtered_nu2mitogeno.maf > filtered_nu2mitogeno.bed
+    maf-Bed filtered_nu2mitopro.maf > filtered_nu2mitopro.bed
 
 
 Alignments that overlapped with nuclear ribosomal RNA region were also excluded respectively in the two comparisons. This is due to the fact that mitochondrial rRNA is similar to nuclear rRNA, resulting in an overestimation of ancient NUMTs counts as some mitochondrial sequences are mistakenly aligned with the nuclear rRNA regions.
@@ -78,7 +78,6 @@ Please set `$yourspecies` to the name of the species you are looking at.
 
 [LAST]: https://gitlab.com/mcfrith/last/-/tree/main?ref_type=heads
 [BED]: https://genome.ucsc.edu/FAQ/FAQformat.html#format1
-[maf-convert]: https://gitlab.com/mcfrith/last/-/blob/main/doc/maf-convert.rst?ref_type=heads
 [seg-suite]: https://github.com/mcfrith/seg-suite
 [bedtools merge]: https://bedtools.readthedocs.io/en/latest/content/tools/merge.html
 [NCBI]: https://www.ncbi.nlm.nih.gov/genome

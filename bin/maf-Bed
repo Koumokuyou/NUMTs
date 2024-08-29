@@ -1,0 +1,26 @@
+#! /bin/sh
+# Convert MAF alignments to BED format
+# The BED score is defined as: -10 log10( E-value )
+argNum=1
+if [ $# -ne $argNum ]; then
+        echo "You need $argNum arguments" 1>&2
+        echo "- Input file in maf-format" 1>&2
+        echo "Usage: $0 <Input_maf_file>" 1>&2
+        exit 1
+fi
+
+sed 's/E=//' "$@" |
+
+    grep -v '^#' |
+
+    awk '{
+start = $14
+span = $15
+strand = $16
+if (strand == "-") start = $17 - start - span
+evalue = $4
+if (evalue + 0 < 1e-100) evalue = 1e-100  # I dont know why "+ 0" is needed
+score = -log(evalue) / log(10) * 10
+if (score < 0) score = 0
+print $13, start, start+span, $6 ":" $7 "-" $7+$8, int(score+0.5), strand
+}' RS= OFS="\t"
