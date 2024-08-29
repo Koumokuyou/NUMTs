@@ -41,17 +41,6 @@ Comparison between nuclear genome and mitochondrial protein was also completed b
     
 `-P8` makes it faster by using 8 threads, with no effect on results.
 
-## Reverse search
-Next, we repeated the search using a reversed query sequence respectively in the two comparisons described above for negative control.
-Take the reverse search in *Nuclear genome-mitochondrial genome comparison* for example, the sample commands are like this:
-
-     lastal -P8 -H1 -J1 -R00 --reverse -p nu2mitogeno.train mitogenodb $nuclearFASTA > rev_nu2mitogeno.maf
-
-The highest score obtained from the reverse search was used as a threshold to filter out alignments with score lower than those from the original search.
-
-    filter_maf nu2mitogeno.maf rev_nu2mitogeno.maf > filtered_nu2mitogeno.maf
-    filter_maf nu2mitopro.maf rev_nu2mitopro.maf > filtered_nu2mitopro.maf
-
 ## Remove nuclear ribosomal RNA regions
 Before removing, we need to convert the result from maf format to [BED][] format using `maf-Bed`:
 
