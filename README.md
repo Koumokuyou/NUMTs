@@ -10,9 +10,15 @@ This track is a collection of Nuclear mitochondrial genome segments, provided in
 | susScr11     | pig        | [NCBI][] |
 
 You can easily view the NUMTs in the UCSC genome browser, by clicking:
+hg38:
 https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&hubUrl=https://raw.githubusercontent.com/Koumokuyou/NUMTs/main/hub.txt
+mm39:
+https://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&hubUrl=https://raw.githubusercontent.com/Koumokuyou/NUMTs/main/mm39/trackDb.txt
+panTro6:
+https://genome.ucsc.edu/cgi-bin/hgTracks?db=panTro6&hubUrl=https://raw.githubusercontent.com/Koumokuyou/NUMTs/main/panTro6/trackDb.txt
+susScr11:
+https://genome.ucsc.edu/cgi-bin/hgTracks?db=susScr11&hubUrl=https://raw.githubusercontent.com/Koumokuyou/NUMTs/main/susScr11/trackDb.txt
 
-# NUMTs search
 NUMTs in this track are found by the steps below:
 
 ## Nuclear genome-mitochondrial genome comparison
