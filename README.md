@@ -67,7 +67,7 @@ This step needs [seg-suite][], so you may need to install it beforehand.
     remvrrna filtered_nu2mitopro.bed rRNA.bed
 
 ## Merge results 
-Finally, if the two alignments from the two comparisons respectively, are in the same orientation and either overlap by at least 1bp or are bookended, they will be merged into a single NUMT. Alignments with a length of less than 30bp in the merged result were removed. This threshold was determined empirically.
+Finally, if the two alignments from the two comparisons respectively, either overlap by at least 1bp or are bookended, they will be merged into a single NUMT. Alignments with a length of less than 30bp in the merged result were removed. This threshold was determined empirically.
 
 This step needs [bedtools merge][], so you may need to install it beforehand.
 
