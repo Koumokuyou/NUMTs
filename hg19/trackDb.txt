@@ -1,9 +1,8 @@
 track NUmts
-bigDataUrl NUMTs_susScr11.bb
+bigDataUrl NUMTs_hg19.bb
 shortLabel NUMTs
 longLabel Nuclear mitochondrial DNA segments
 spectrum on
 scoreMax 100
 type bigBed 6
 visibility pack
-html ../hg38/NUmts.html

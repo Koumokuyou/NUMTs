@@ -41,26 +41,34 @@ Comparison between nuclear genome and mitochondrial protein was also completed b
     
 `-P8` makes it faster by using 8 threads, with no effect on results.
 
+
 ## Remove nuclear ribosomal RNA regions
 Before removing, we need to convert the result from maf format to [BED][] format using `maf-Bed`:
 
-    maf-Bed filtered_nu2mitogeno.maf > filtered_nu2mitogeno.bed
-    maf-Bed filtered_nu2mitopro.maf > filtered_nu2mitopro.bed
+    maf-Bed nu2mitogeno.maf > nu2mitogeno.bed
+    maf-Bed nu2mitopro.maf > nu2mitopro.bed
 
 
-Alignments that overlapped with nuclear ribosomal RNA region were also excluded respectively in the two comparisons. This is due to the fact that mitochondrial rRNA is similar to nuclear rRNA, resulting in an overestimation of ancient NUMTs counts as some mitochondrial sequences are mistakenly aligned with the nuclear rRNA regions.
+Alignments that overlapped with nuclear ribosomal RNA region were excluded respectively in the two comparisons. This is due to the fact that mitochondrial rRNA is similar to nuclear rRNA, resulting in an overestimation of ancient NUMTs counts as some mitochondrial sequences are mistakenly aligned with the nuclear rRNA regions.
 
 This step needs [seg-suite][], so you may need to install it beforehand.
 
-    remvrrna filtered_nu2mitogeno.bed rRNA.bed
-    remvrrna filtered_nu2mitopro.bed rRNA.bed
+    remvrrna nu2mitogeno.bed rRNA.bed
+    remvrrna nu2mitopro.bed rRNA.bed
 
 ## Merge results 
-Finally, if the two alignments from the two comparisons respectively, either overlap by at least 1bp or are bookended, they will be merged into a single NUMT. Alignments with a length of less than 30bp in the merged result were removed. This threshold was determined empirically.
+The strand information in protein search is not consistent with it in genome search, so before merging, we need to make it consistent with results in genome search. To convert, we need to know which mitochondrial DNA strand each mitochondrial protein comes from:
+
+    lastdb -P8 -q -c mitoprodb $mitoproFASTA
+    last-train -P8 --codon mitoprodb $mitogenoFASTA > mtgeno2pro.train
+    lastal -P8 -D1e10 -p mtgeno2pro.train mitoprodb $mitogenoFASTA > mtgeno2pro.maf
+    fix-protein-strand mtgeno2pro.maf nu2mitopro_movrrna.bed > nu2mitopro_movrrna_fix.bed
+
+Finally, if the two alignments from the two comparisons respectively, are in the same strand and either overlap by at least 1bp or are bookended, they will be merged into a single NUMT. Alignments with a length of less than 30bp in the merged result were removed. This threshold was determined empirically.
 
 This step needs [bedtools merge][], so you may need to install it beforehand.
 
-    merge filtered_nu2mitogeno_movrrna.bed filtered_nu2mitopro_movrrna.bed $yourspecies 
+    merge nu2mitogeno_movrrna.bed nu2mitopro_movrrna_fix.bed $yourspecies 
 
 Please set `$yourspecies` to the name of the species you are looking at.
 

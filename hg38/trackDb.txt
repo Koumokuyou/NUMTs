@@ -4,5 +4,5 @@ shortLabel NUMTs
 longLabel Nuclear mitochondrial DNA segments
 spectrum on
 scoreMax 100
-type bigBed 5
+type bigBed 6
 visibility pack

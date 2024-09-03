@@ -22,5 +22,5 @@ evalue = $4
 if (evalue + 0 < 1e-100) evalue = 1e-100  # I dont know why "+ 0" is needed
 score = -log(evalue) / log(10) * 10
 if (score < 0) score = 0
-print $13, start, start+span, $6 ":" $7 "-" $7+$8, int(score+0.5), strand
+print $13, start, start+span, $6, int(score+0.5), strand
 }' RS= OFS="\t"

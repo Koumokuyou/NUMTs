@@ -1,0 +1,21 @@
+#! /bin/sh
+argNum=2
+if [$# -ne argNum]; then
+    echo "You need $argNum arguments" 1>&2
+    echo "- The protein alignments maf file" 1>&2
+    echo "- The nu2mitopro bed file" 1>&2
+    echo "Usage: $0 <protAlgns.maf> <nu2mitopro.bed>"
+    exit 1
+fi
+
+maf=$1  # protAlns.maf
+bed=$2  # nu2mitopro.bed
+
+sed 's/score=//' "$maf" |
+    grep -v '^#' |
+    awk '{print $2, $6, $16}' RS= |
+    sort -n |
+    awk '
+NR == FNR {a[$2] = $3; next}
+$6 = ($6 == a[$4]) ? "+" : "-"
+' OFS="\t" - "$bed"
