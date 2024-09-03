@@ -5,6 +5,34 @@
 <b>Notice: Alignments to incompletely assembled or unmapped chromosome locations are omitted in this track.</b>
 <p>In this track, the BED score is calculated by -10log10(E-value), representing the alignment confidence and is reflected in the level of gray, and scores >=100 (E-values <= 1e-10) are black. It is important to note that when a NUMT is a merged result, the score is taken as the highest score among all results.</p>
 
+<h2>Comparison with 2011 human UCSC dataset</h2>
+Our track offers NUMTs both in hg19 and hg38 assemblies. The exsiting human UCSC database is based on hg19 assemblies. We conducted a comparison between our track and the exsiting human UCSC database using bedtools v2.31.1. The results are shown in the following table:
+
+<table border="1">
+  <thead>
+      <tr>
+          <th>Total Counts</th>
+          <th>Number of 1bp overlap</th>
+          <th>Number of 50% overlap</th>
+          <th>Number of 90% overlap</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>2011 hg19 NUMTs track, 766</td>
+          <td>2011 hg19 NUMTs track, -</td>
+          <td>2011 hg19 NUMTs track, -</td>
+          <td>2011 hg19 NUMTs track, -</td>
+      </tr>
+      <tr>
+        <td>This hg19 NUMTs track, 1077</td>
+        <td>This hg19 NUMTs track, 756</td>
+        <td>This hg19 NUMTs track, 753</td>
+        <td>This hg19 NUMTs track, 740</td>
+      </tr>
+  </tbody>
+</table>
+
 <h2>Methods</h2>
 
 <p>For more detailed information on the methods used for detecting NUMTs, please visit the following webpage:</p>
