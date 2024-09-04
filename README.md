@@ -1,6 +1,8 @@
+# Description
+
 This track is a collection of Nuclear mitochondrial genome segments, provided in [BED][] format.
 
-**Notice**: Alignments reference to incompletely assembled or unmapped chromosome locations are omitted in this track.
+**Notice**: Alignments to incompletely assembled or unmapped chromosome locations are omitted in this track.
 
 |  Genome name |   Animal   | UCSC genome browser link  |
 |--------------|------------|---------------------------|
