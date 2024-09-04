@@ -14,9 +14,13 @@ This track is a collection of Nuclear mitochondrial genome segments, provided in
 Our track offers NUMTs both in hg19 and hg38 assemblies. The exsiting human UCSC database is based on hg19 assembly. We conducted a comparison between our track and the exsiting human UCSC database using bedtools v2.31.1. The results are shown in the following table:
 
 |        Track            |  Total Counts  |  1bp Overlap Rate |  50% Overlap Rate  |  90% Overlap Rate  |
+|-------------------------|----------------|-------------------|--------------------|--------------------|
 |  2011 hg19 NUMTs track  |      766       |         -         |         -          |         -          |
 |  Our hg19 NUMTs track   |      1077      |   98.7%(756/766)  |   98.3%(753/766)   |   96.6%(740/766)   |
- 
+
+
+NUMTs are detected by the following steps:
+
 ## Nuclear genome-mitochondrial genome comparison
 We first compared the nuclear genome to the mitochondrial genome by [LAST][]. The sample commands are shown below:
 
