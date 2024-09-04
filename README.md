@@ -19,6 +19,7 @@ Our track offers NUMTs both in hg19 and hg38 assemblies. The exsiting human UCSC
 |  Our hg19 NUMTs track   |      1077      |   98.7%(756/766)  |   98.3%(753/766)   |   96.6%(740/766)   |
 
 
+# Method
 
 **NUMTs are detected by the following steps:**
 
