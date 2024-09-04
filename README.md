@@ -19,7 +19,8 @@ Our track offers NUMTs both in hg19 and hg38 assemblies. The exsiting human UCSC
 |  Our hg19 NUMTs track   |      1077      |   98.7%(756/766)  |   98.3%(753/766)   |   96.6%(740/766)   |
 
 
-NUMTs are detected by the following steps:
+
+**NUMTs are detected by the following steps:**
 
 ## Nuclear genome-mitochondrial genome comparison
 We first compared the nuclear genome to the mitochondrial genome by [LAST][]. The sample commands are shown below:
