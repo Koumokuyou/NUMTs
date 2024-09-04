@@ -2,29 +2,21 @@ This track is a collection of Nuclear mitochondrial genome segments, provided in
 
 **Notice**: Alignments reference to incompletely assembled or unmapped chromosome locations are omitted in this track.
 
-| Genome name  | Animal     | Source   |
-|--------------|------------|----------|
-| hg38         | human      | [NCBI][] |
-| mm39         | mouse      | [NCBI][] |
-| panTro6      | chimpanzee | [NCBI][] |
-| susScr11     | pig        | [NCBI][] |
+|  Genome name |   Animal   | UCSC genome browser link  |
+|--------------|------------|---------------------------|
+|     hg38     |    human   |      [hg38 link][]        |
+|     hg19     |    human   |      [hg19 link][]        |
+|     mm39     |    mouse   |      [mm39 link][]        |
+|    panTro6   | chimpanzee |      [panTro6 link][]     |
+|    susScr11  |    pig     |     [susScr11 link][]     |
 
-You can easily view the NUMTs in the UCSC genome browser, by clicking:
+## Comparison with 2011 human UCSC dataset
+Our track offers NUMTs both in hg19 and hg38 assemblies. The exsiting human UCSC database is based on hg19 assembly. We conducted a comparison between our track and the exsiting human UCSC database using bedtools v2.31.1. The results are shown in the following table:
 
-hg38:
-https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&hubUrl=https://raw.githubusercontent.com/Koumokuyou/NUMTs/main/hub.txt
-
-mm39:
-https://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&hubUrl=https://raw.githubusercontent.com/Koumokuyou/NUMTs/main/hub.txt
-
-panTro6:
-https://genome.ucsc.edu/cgi-bin/hgTracks?db=panTro6&hubUrl=https://raw.githubusercontent.com/Koumokuyou/NUMTs/main/hub.txt
-
-susScr11:
-https://genome.ucsc.edu/cgi-bin/hgTracks?db=susScr11&hubUrl=https://raw.githubusercontent.com/Koumokuyou/NUMTs/main/hub.txt
-
-NUMTs in this track are found by the steps below:
-
+|        Track            |  Total Counts  |  1bp Overlap Rate |  50% Overlap Rate  |  90% Overlap Rate  |
+|  2011 hg19 NUMTs track  |      766       |         -         |         -          |         -          |
+|  Our hg19 NUMTs track   |      1077      |   98.7%(756/766)  |   98.3%(753/766)   |   96.6%(740/766)   |
+ 
 ## Nuclear genome-mitochondrial genome comparison
 We first compared the nuclear genome to the mitochondrial genome by [LAST][]. The sample commands are shown below:
 
@@ -77,4 +69,8 @@ Please set `$yourspecies` to the name of the species you are looking at.
 [BED]: https://genome.ucsc.edu/FAQ/FAQformat.html#format1
 [seg-suite]: https://github.com/mcfrith/seg-suite
 [bedtools merge]: https://bedtools.readthedocs.io/en/latest/content/tools/merge.html
-[NCBI]: https://www.ncbi.nlm.nih.gov/genome
+[hg38 link]: https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&hubUrl=https://raw.githubusercontent.com/Koumokuyou/NUMTs/main/hub.txt
+[hg19 link]: https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&hubUrl=https://raw.githubusercontent.com/Koumokuyou/NUMTs/main/hub.txt
+[mm39 link]: https://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&hubUrl=https://raw.githubusercontent.com/Koumokuyou/NUMTs/main/hub.txt
+[panTro6 link]: https://genome.ucsc.edu/cgi-bin/hgTracks?db=panTro6&hubUrl=https://raw.githubusercontent.com/Koumokuyou/NUMTs/main/hub.txt
+[susScr11 link]: https://genome.ucsc.edu/cgi-bin/hgTracks?db=susScr11&hubUrl=https://raw.githubusercontent.com/Koumokuyou/NUMTs/main/hub.txt
