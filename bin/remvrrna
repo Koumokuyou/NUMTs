@@ -14,10 +14,10 @@ rRNAFile=$2
 
 # Define output file name and max overlap percent
 inputFile="${alignsFile%.*}"
-outputFile="${inputFile}_movrrna.bed"
+#outputFile="${inputFile}_movrrna.bed"
 maxOverlapPercent=50
 
 seg-join -x$maxOverlapPercent \
     <(awk '{print $3-$2, $1, $2, $0, 0}' "$rRNAFile" | tr '\t' '!' | seg-sort) \
     <(awk '{print $3-$2, $1, $2, $0, 0}' "$alignsFile" | tr '\t' '!' | seg-sort) \
-    | cut -f4 | tr '!' '\t' > "$outputFile"
+    | cut -f4 | tr '!' '\t' 

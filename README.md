@@ -53,8 +53,8 @@ Alignments that overlapped with nuclear ribosomal RNA region were excluded respe
 
 This step needs [seg-suite][], so you may need to install it beforehand.
 
-    remvrrna nu2mitogeno.bed rRNA.bed
-    remvrrna nu2mitopro.bed rRNA.bed
+    remvrrna nu2mitogeno.bed rRNA.bed > nu2mitogeno_movrrna.bed
+    remvrrna nu2mitopro.bed rRNA.bed > nu2mitopro_movrrna.bed
 
 ## Merge results 
 The strand information in protein search is not consistent with it in genome search, so before merging, we need to make it consistent with results in genome search. To convert, we need to know which mitochondrial DNA strand each mitochondrial protein comes from:
