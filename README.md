@@ -28,14 +28,14 @@ Our track offers NUMTs both in hg19 and hg38 assemblies. The exsiting human UCSC
 ## Nuclear genome-mitochondrial genome comparison
 We first compared the nuclear genome to the mitochondrial genome by [LAST][]. The sample commands are shown below:
 
-    lastdb -P8 -c mitogenodb $mitogenoFASTA
+    lastdb --circular -c mitogenodb $mitogenoFASTA
     last-train -S0 --pid=70 --sample-number=0 -P8 mitogenodb $nuclearFASTA > nu2mitogeno.train
     lastal -P8 -H1 -J1 -R00 -p nu2mitogeno.train mitogenodb $nuclearFASTA > nu2mitogeno.maf
 
 ## Nuclear genome-mitochondrial protein comparison
 Comparison between nuclear genome and mitochondrial protein was also completed by [LAST][], with commands:
 
-    lastdb -P8 -q -c mitoprodb $mitoproFASTA
+    lastdb -q -c mitoprodb $mitoproFASTA
     last-train --codon --pid=70 --sample-number=0 -P8 mitoprodb $nuclearFASTA > nu2mitopro.train
     lastal -P8 -H1 -K1 -m500 -p nu2mitopro.train mitoprodb $nuclearFASTA > nu2mitopro.maf
     
@@ -71,7 +71,6 @@ This step needs [bedtools merge][], so you may need to install it beforehand.
     merge nu2mitogeno_movrrna.bed nu2mitopro_movrrna_fix.bed $yourspecies 
 
 Please set `$yourspecies` to the name of the species you are looking at.
-
 
 [LAST]: https://gitlab.com/mcfrith/last/-/tree/main?ref_type=heads
 [BED]: https://genome.ucsc.edu/FAQ/FAQformat.html#format1
