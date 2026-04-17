@@ -23,6 +23,10 @@ Our track offers NUMTs both in hg19 and hg38 assemblies. The exsiting human UCSC
 
 # Method
 
+For details of this pipeline, please see:
+
+Huang M, Frith MC. [Probability-Based Sequence Comparison Finds Pre-Eutherian Nuclear Mitochondrial DNA Segments in Mammalian Genomes.][] J Comput Biol. 2026 Feb 2:15578666261416560. doi: 10.1177/15578666261416560. 
+
 **NUMTs are detected by the following steps:**
 
 ## Nuclear genome-mitochondrial genome comparison
@@ -81,3 +85,4 @@ Please set `$yourspecies` to the name of the species you are looking at.
 [mm39 link]: https://genome.ucsc.edu/cgi-bin/hgTracks?db=mm39&hubUrl=https://raw.githubusercontent.com/Koumokuyou/NUMTs/main/hub.txt
 [panTro6 link]: https://genome.ucsc.edu/cgi-bin/hgTracks?db=panTro6&hubUrl=https://raw.githubusercontent.com/Koumokuyou/NUMTs/main/hub.txt
 [susScr11 link]: https://genome.ucsc.edu/cgi-bin/hgTracks?db=susScr11&hubUrl=https://raw.githubusercontent.com/Koumokuyou/NUMTs/main/hub.txt
+[Probability-Based Sequence Comparison Finds Pre-Eutherian Nuclear Mitochondrial DNA Segments in Mammalian Genomes.]:https://journals.sagepub.com/doi/10.1177/15578666261416560?url_ver=Z39.88-2003&rfr_id=ori:rid:crossref.org&rfr_dat=cr_pub%20%200pubmed
