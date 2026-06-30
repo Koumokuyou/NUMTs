@@ -12,6 +12,9 @@ This track is a collection of Nuclear mitochondrial genome segments, provided in
 |    panTro6   | chimpanzee |      [panTro6 link][]     |
 |    susScr11  |    pig     |     [susScr11 link][]     |
 
+## Raw hg38 alignments
+The `hg38_maf` directory contains the original alignment files after removing alignments that overlap with nuclear rRNA regions. These files include alignments between mitochondrial proteins and the nuclear genome, and alignments between the mitochondrial genome and the nuclear genome. They are stored in [MAF][] format.
+
 ## Comparison with 2011 human UCSC dataset
 Our track offers NUMTs both in hg19 and hg38 assemblies. The exsiting human UCSC database is based on hg19 assembly. We conducted a comparison between our track and the exsiting human UCSC database using bedtools v2.31.1. The results are shown in the following table:
 
@@ -25,7 +28,7 @@ Our track offers NUMTs both in hg19 and hg38 assemblies. The exsiting human UCSC
 
 For details of this pipeline, please see:
 
-Huang M, Frith MC. [Probability-Based Sequence Comparison Finds Pre-Eutherian Nuclear Mitochondrial DNA Segments in Mammalian Genomes.][] J Comput Biol. 2026 Feb 2:15578666261416560. doi: 10.1177/15578666261416560. 
+Huang M, Frith MC. [Probability-Based Sequence Comparison Finds Pre-Eutherian Nuclear Mitochondrial DNA Segments in Mammalian Genomes.][] J Comput Biol. 2026 Apr;33(4):401-419. doi: 10.1177/15578666261416560. 
 
 **NUMTs are detected by the following steps:**
 
@@ -78,6 +81,7 @@ Please set `$yourspecies` to the name of the species you are looking at.
 
 [LAST]: https://gitlab.com/mcfrith/last/-/tree/main?ref_type=heads
 [BED]: https://genome.ucsc.edu/FAQ/FAQformat.html#format1
+[MAF]: https://genome.ucsc.edu/FAQ/FAQformat.html#format5
 [seg-suite]: https://github.com/mcfrith/seg-suite
 [bedtools merge]: https://bedtools.readthedocs.io/en/latest/content/tools/merge.html
 [hg38 link]: https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&hubUrl=https://raw.githubusercontent.com/Koumokuyou/NUMTs/main/hub.txt
